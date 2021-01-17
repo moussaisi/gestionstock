@@ -66,11 +66,11 @@ spring:
 server:
   port: 8088
 
-# ===================================================================
+# ====================================================================
 # JHipster specific properties
 #
 # Full reference is available at: https://www.jhipster.tech/common-application-properties/
-# ===================================================================
+# ====================================================================
 
 jhipster:
   # CORS is only enabled by default with the "dev" profile, so BrowserSync can access the API
