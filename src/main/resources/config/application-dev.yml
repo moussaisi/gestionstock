@@ -67,7 +67,7 @@ server:
   port: 8088
 
 # ====================================================================
-# JHipster specific properties
+# JHipster specific propertiesf
 # Full reference is available at: https://www.jhipster.tech/common-application-properties/
 # ====================================================================
 
