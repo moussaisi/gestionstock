@@ -18,10 +18,6 @@
     {
       "fieldName": "date",
       "fieldType": "ZonedDateTime"
-    },
-    {
-      "fieldName": "date_der_modif",
-      "fieldType": "ZonedDateTime"
     }
   ],
   "changelogDate": "20210127151550",

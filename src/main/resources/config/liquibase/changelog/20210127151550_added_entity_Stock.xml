@@ -22,16 +22,12 @@
             <column name="date" type="datetime">
                 <constraints nullable="true" />
             </column>
-            <column name="date_der_modif" type="datetime">
-                <constraints nullable="true" />
-            </column>
             <column name="produit_id" type="bigint">
                 <constraints nullable="true" />
             </column>
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here -->
         </createTable>
         <dropDefaultValue tableName="stock" columnName="date" columnDataType="datetime"/>
-        <dropDefaultValue tableName="stock" columnName="date_der_modif" columnDataType="datetime"/>
     </changeSet>
 
     <changeSet id="20210127151550-1-relations" author="jhipster">
@@ -55,7 +51,6 @@
             <column name="id" type="numeric"/>
             <column name="quantite" type="numeric"/>
             <column name="date" type="datetime"/>
-            <column name="date_der_modif" type="datetime"/>
             <!-- jhipster-needle-liquibase-add-loadcolumn - JHipster (and/or extensions) can add load columns here -->
         </loadData>
     </changeSet>

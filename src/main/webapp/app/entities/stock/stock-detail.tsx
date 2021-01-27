@@ -33,12 +33,6 @@ export const StockDetail = (props: IStockDetailProps) => {
             <span id="date">Date</span>
           </dt>
           <dd>{stockEntity.date ? <TextFormat value={stockEntity.date} type="date" format={APP_DATE_FORMAT} /> : null}</dd>
-          <dt>
-            <span id="date_der_modif">Date Der Modif</span>
-          </dt>
-          <dd>
-            {stockEntity.date_der_modif ? <TextFormat value={stockEntity.date_der_modif} type="date" format={APP_DATE_FORMAT} /> : null}
-          </dd>
           <dt>Produit</dt>
           <dd>{stockEntity.produit ? stockEntity.produit.libelle_produit : ''}</dd>
         </dl>

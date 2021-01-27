@@ -26,9 +26,6 @@ public class Stock implements Serializable {
     @Column(name = "date")
     private ZonedDateTime date;
 
-    @Column(name = "date_der_modif")
-    private ZonedDateTime date_der_modif;
-
     @ManyToOne
     @JsonIgnoreProperties(value = "stocks", allowSetters = true)
     private Produit produit;
@@ -68,19 +65,6 @@ public class Stock implements Serializable {
         this.date = date;
     }
 
-    public ZonedDateTime getDate_der_modif() {
-        return date_der_modif;
-    }
-
-    public Stock date_der_modif(ZonedDateTime date_der_modif) {
-        this.date_der_modif = date_der_modif;
-        return this;
-    }
-
-    public void setDate_der_modif(ZonedDateTime date_der_modif) {
-        this.date_der_modif = date_der_modif;
-    }
-
     public Produit getProduit() {
         return produit;
     }
@@ -118,7 +102,6 @@ public class Stock implements Serializable {
             "id=" + getId() +
             ", quantite=" + getQuantite() +
             ", date='" + getDate() + "'" +
-            ", date_der_modif='" + getDate_der_modif() + "'" +
             "}";
     }
 }

@@ -40,9 +40,6 @@ public class StockResourceIT {
     private static final ZonedDateTime DEFAULT_DATE = ZonedDateTime.ofInstant(Instant.ofEpochMilli(0L), ZoneOffset.UTC);
     private static final ZonedDateTime UPDATED_DATE = ZonedDateTime.now(ZoneId.systemDefault()).withNano(0);
 
-    private static final ZonedDateTime DEFAULT_DATE_DER_MODIF = ZonedDateTime.ofInstant(Instant.ofEpochMilli(0L), ZoneOffset.UTC);
-    private static final ZonedDateTime UPDATED_DATE_DER_MODIF = ZonedDateTime.now(ZoneId.systemDefault()).withNano(0);
-
     @Autowired
     private StockRepository stockRepository;
 
@@ -63,8 +60,7 @@ public class StockResourceIT {
     public static Stock createEntity(EntityManager em) {
         Stock stock = new Stock()
             .quantite(DEFAULT_QUANTITE)
-            .date(DEFAULT_DATE)
-            .date_der_modif(DEFAULT_DATE_DER_MODIF);
+            .date(DEFAULT_DATE);
         return stock;
     }
     /**
@@ -76,8 +72,7 @@ public class StockResourceIT {
     public static Stock createUpdatedEntity(EntityManager em) {
         Stock stock = new Stock()
             .quantite(UPDATED_QUANTITE)
-            .date(UPDATED_DATE)
-            .date_der_modif(UPDATED_DATE_DER_MODIF);
+            .date(UPDATED_DATE);
         return stock;
     }
 
@@ -102,7 +97,6 @@ public class StockResourceIT {
         Stock testStock = stockList.get(stockList.size() - 1);
         assertThat(testStock.getQuantite()).isEqualTo(DEFAULT_QUANTITE);
         assertThat(testStock.getDate()).isEqualTo(DEFAULT_DATE);
-        assertThat(testStock.getDate_der_modif()).isEqualTo(DEFAULT_DATE_DER_MODIF);
     }
 
     @Test
@@ -137,8 +131,7 @@ public class StockResourceIT {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(stock.getId().intValue())))
             .andExpect(jsonPath("$.[*].quantite").value(hasItem(DEFAULT_QUANTITE)))
-            .andExpect(jsonPath("$.[*].date").value(hasItem(sameInstant(DEFAULT_DATE))))
-            .andExpect(jsonPath("$.[*].date_der_modif").value(hasItem(sameInstant(DEFAULT_DATE_DER_MODIF))));
+            .andExpect(jsonPath("$.[*].date").value(hasItem(sameInstant(DEFAULT_DATE))));
     }
     
     @Test
@@ -153,8 +146,7 @@ public class StockResourceIT {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.id").value(stock.getId().intValue()))
             .andExpect(jsonPath("$.quantite").value(DEFAULT_QUANTITE))
-            .andExpect(jsonPath("$.date").value(sameInstant(DEFAULT_DATE)))
-            .andExpect(jsonPath("$.date_der_modif").value(sameInstant(DEFAULT_DATE_DER_MODIF)));
+            .andExpect(jsonPath("$.date").value(sameInstant(DEFAULT_DATE)));
     }
     @Test
     @Transactional
@@ -178,8 +170,7 @@ public class StockResourceIT {
         em.detach(updatedStock);
         updatedStock
             .quantite(UPDATED_QUANTITE)
-            .date(UPDATED_DATE)
-            .date_der_modif(UPDATED_DATE_DER_MODIF);
+            .date(UPDATED_DATE);
 
         restStockMockMvc.perform(put("/api/stocks")
             .contentType(MediaType.APPLICATION_JSON)
@@ -192,7 +183,6 @@ public class StockResourceIT {
         Stock testStock = stockList.get(stockList.size() - 1);
         assertThat(testStock.getQuantite()).isEqualTo(UPDATED_QUANTITE);
         assertThat(testStock.getDate()).isEqualTo(UPDATED_DATE);
-        assertThat(testStock.getDate_der_modif()).isEqualTo(UPDATED_DATE_DER_MODIF);
     }
 
     @Test

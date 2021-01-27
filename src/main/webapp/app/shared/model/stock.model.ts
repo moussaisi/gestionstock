@@ -5,7 +5,6 @@ export interface IStock {
   id?: number;
   quantite?: number;
   date?: string;
-  date_der_modif?: string;
   produit?: IProduit;
 }
 

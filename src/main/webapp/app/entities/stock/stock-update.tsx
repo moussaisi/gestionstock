@@ -44,7 +44,6 @@ export const StockUpdate = (props: IStockUpdateProps) => {
 
   const saveEntity = (event, errors, values) => {
     values.date = convertDateTimeToServer(values.date);
-    values.date_der_modif = convertDateTimeToServer(values.date_der_modif);
 
     if (errors.length === 0) {
       const entity = {
@@ -96,19 +95,6 @@ export const StockUpdate = (props: IStockUpdateProps) => {
                   name="date"
                   placeholder={'YYYY-MM-DD HH:mm'}
                   value={isNew ? displayDefaultDateTime() : convertDateTimeFromServer(props.stockEntity.date)}
-                />
-              </AvGroup>
-              <AvGroup>
-                <Label id="date_der_modifLabel" for="stock-date_der_modif">
-                  Date Der Modif
-                </Label>
-                <AvInput
-                  id="stock-date_der_modif"
-                  type="datetime-local"
-                  className="form-control"
-                  name="date_der_modif"
-                  placeholder={'YYYY-MM-DD HH:mm'}
-                  value={isNew ? displayDefaultDateTime() : convertDateTimeFromServer(props.stockEntity.date_der_modif)}
                 />
               </AvGroup>
               <AvGroup>

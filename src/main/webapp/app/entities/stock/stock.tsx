@@ -88,9 +88,6 @@ export const Stock = (props: IStockProps) => {
                 <th className="hand" onClick={sort('date')}>
                   Date <FontAwesomeIcon icon="sort" />
                 </th>
-                <th className="hand" onClick={sort('date_der_modif')}>
-                  Date Der Modif <FontAwesomeIcon icon="sort" />
-                </th>
                 <th>
                   Produit <FontAwesomeIcon icon="sort" />
                 </th>
@@ -107,7 +104,6 @@ export const Stock = (props: IStockProps) => {
                   </td>
                   <td>{stock.quantite}</td>
                   <td>{stock.date ? <TextFormat type="date" value={stock.date} format={APP_DATE_FORMAT} /> : null}</td>
-                  <td>{stock.date_der_modif ? <TextFormat type="date" value={stock.date_der_modif} format={APP_DATE_FORMAT} /> : null}</td>
                   <td>{stock.produit ? <Link to={`produit/${stock.produit.id}`}>{stock.produit.libelle_produit}</Link> : ''}</td>
                   <td className="text-right">
                     <div className="btn-group flex-btn-group-container">
