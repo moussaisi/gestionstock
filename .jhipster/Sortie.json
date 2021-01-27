@@ -1,0 +1,39 @@
+{
+  "fluentMethods": true,
+  "clientRootFolder": "",
+  "relationships": [
+    {
+      "relationshipName": "produit",
+      "otherEntityName": "produit",
+      "relationshipType": "many-to-one",
+      "otherEntityField": "libelle_produit",
+      "otherEntityRelationshipName": "sortie"
+    },
+    {
+      "relationshipName": "facture",
+      "otherEntityName": "facture",
+      "relationshipType": "many-to-one",
+      "otherEntityField": "prenom_client",
+      "otherEntityRelationshipName": "sortie"
+    }
+  ],
+  "fields": [
+    {
+      "fieldName": "date",
+      "fieldType": "ZonedDateTime"
+    },
+    {
+      "fieldName": "quantite",
+      "fieldType": "Integer"
+    }
+  ],
+  "changelogDate": "20210127152505",
+  "dto": "no",
+  "searchEngine": false,
+  "service": "no",
+  "entityTableName": "sortie",
+  "databaseType": "sql",
+  "readOnly": false,
+  "jpaMetamodelFiltering": false,
+  "pagination": "pagination"
+}

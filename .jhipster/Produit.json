@@ -1,0 +1,29 @@
+{
+  "fluentMethods": true,
+  "clientRootFolder": "",
+  "relationships": [
+    {
+      "relationshipName": "categorie",
+      "otherEntityName": "categorie",
+      "relationshipType": "many-to-one",
+      "otherEntityField": "libelle_categorie",
+      "otherEntityRelationshipName": "produit"
+    }
+  ],
+  "fields": [
+    {
+      "fieldName": "libelle_produit",
+      "fieldType": "String",
+      "fieldValidateRules": []
+    }
+  ],
+  "changelogDate": "20210127150930",
+  "dto": "no",
+  "searchEngine": false,
+  "service": "no",
+  "entityTableName": "produit",
+  "databaseType": "sql",
+  "readOnly": false,
+  "jpaMetamodelFiltering": false,
+  "pagination": "pagination"
+}
