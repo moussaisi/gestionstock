@@ -6,6 +6,8 @@ package com.diti5.gestionstock.security;
 public final class AuthoritiesConstants {
 
     public static final String ADMIN = "ROLE_ADMIN";
+    public static final String GESTIONNAIRE = "ROLE_GESTIONNAIRE";
+    public static final String VENDEUR = "ROLE_VENDEUR";
 
     public static final String USER = "ROLE_USER";
 

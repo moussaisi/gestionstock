@@ -51,7 +51,7 @@ spring:
   jpa:
     show-sql: true
   liquibase:
-    # Remove 'faker' if you do not want the sample data to be loaded automatically
+    # Remove 'faker ' if you do not want the sample data to be loaded automatically
     contexts: dev, faker
   mail:
     host: localhost
@@ -66,14 +66,13 @@ spring:
 server:
   port: 8088
 
-# ===================================================================
+# ====================================================================
 # JHipster specific properties
-#
 # Full reference is available at: https://www.jhipster.tech/common-application-properties/
-# ===================================================================
+# ====================================================================
 
 jhipster:
-  # CORS is only enabled by default with the "dev" profile, so BrowserSync can access the API
+  # CORS is only enabled by default with the "dev" profile , so BrowserSync can access the API
   cors:
     allowed-origins: '*'
     allowed-methods: '*'
