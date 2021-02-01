@@ -3,7 +3,7 @@
 ######################
 
 #Ignorer la configuration côté base de données
-/src/main/resources/config/application-dev.yml
+application-dev.yml
 
 /src/main/webapp/content/css/main.css
 /target/classes/static/**
