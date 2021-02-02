@@ -1,9 +1,12 @@
 package com.diti5.gestionstock.repository;
 
-import com.diti5.gestionstock.domain.Stock;
+import com.diti5.gestionstock.domain.Produit_;
+import com.diti5.gestionstock.domain.*;
 
 import org.springframework.data.jpa.repository.*;
 import org.springframework.stereotype.Repository;
+
+import java.util.List;
 
 /**
  * Spring Data  repository for the Stock entity.
@@ -11,4 +14,7 @@ import org.springframework.stereotype.Repository;
 @SuppressWarnings("unused")
 @Repository
 public interface StockRepository extends JpaRepository<Stock, Long> {
+    //Requête qui filtre les produits qui n'existent pas dans le stock
+    @Query("SELECT '*' FROM produit p WHERE p.id NOT IN(select s.produit_id from stock s WHERE s.produit_id IS NOT NULL)")
+    public List<Produit> FindProductsNoStock();
 }
