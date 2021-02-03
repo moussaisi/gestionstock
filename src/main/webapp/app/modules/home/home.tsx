@@ -16,7 +16,7 @@ export const Home = (props: IHomeProp) => {
   return (
     <Row>
       <Col md="9">
-        <h2>Welcome, Java Hipster!</h2>
+        <h2>BIENVENUE DANS L</h2>
         <p className="lead">This is your homepage</p>
         {account && account.login ? (
           <div>
@@ -24,23 +24,7 @@ export const Home = (props: IHomeProp) => {
           </div>
         ) : (
           <div>
-            <Alert color="warning">
-              If you want to
-              <Link to="/login" className="alert-link">
-                {' '}
-                sign in
-              </Link>
-              , you can try the default accounts:
-              <br />- Administrator (login=&quot;admin&quot; and password=&quot;admin&quot;)
-              <br />- User (login=&quot;user&quot; and password=&quot;user&quot;).
-            </Alert>
-
-            <Alert color="warning">
-              You do not have an account yet?&nbsp;
-              <Link to="/account/register" className="alert-link">
-                Register a new account
-              </Link>
-            </Alert>
+            <img src={"https://www.gestimum.com/wp-content/uploads/logiciel-gestion-stock.jpg"}/>
           </div>
         )}
         <p>If you have any question on JHipster:</p>
