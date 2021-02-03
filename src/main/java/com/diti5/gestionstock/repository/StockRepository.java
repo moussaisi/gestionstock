@@ -15,6 +15,6 @@ import java.util.List;
 @Repository
 public interface StockRepository extends JpaRepository<Stock, Long> {
     //Requête qui filtre les produits qui n'existent pas dans le stock
-    @Query("SELECT '*' FROM produit p WHERE p.id NOT IN(select s.produit_id from stock s WHERE s.produit_id IS NOT NULL)")
+    @Query(value = "SELECT '*' FROM produit p WHERE p.id NOT IN(select s.produit_id from stock s WHERE s.produit_id IS NOT NULL)",nativeQuery = true)
     public List<Produit> FindProductsNoStock();
 }
