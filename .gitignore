@@ -1,6 +1,10 @@
 ######################
 # Project Specific
 ######################
+
+#Ignorer la configuration côté base de données
+#application-dev.yml
+
 /src/main/webapp/content/css/main.css
 /target/classes/static/**
 /src/test/javascript/coverage/
