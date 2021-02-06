@@ -1,6 +1,6 @@
 package com.diti5.gestionstock.web.rest;
 
-import com.diti5.gestionstock.domain.Stock;
+import com.diti5.gestionstock.domain.*;
 import com.diti5.gestionstock.repository.StockRepository;
 import com.diti5.gestionstock.web.rest.errors.BadRequestAlertException;
 
@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.time.ZonedDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -58,6 +59,7 @@ public class StockResource {
         if (stock.getId() != null) {
             throw new BadRequestAlertException("A new stock cannot already have an ID", ENTITY_NAME, "idexists");
         }
+        stock.setDate(ZonedDateTime.now());
         Stock result = stockRepository.save(stock);
         return ResponseEntity.created(new URI("/api/stocks/" + result.getId()))
             .headers(HeaderUtil.createEntityCreationAlert(applicationName, false, ENTITY_NAME, result.getId().toString()))
@@ -79,6 +81,7 @@ public class StockResource {
         if (stock.getId() == null) {
             throw new BadRequestAlertException("Invalid id", ENTITY_NAME, "idnull");
         }
+        stock.setDate(ZonedDateTime.now());
         Stock result = stockRepository.save(stock);
         return ResponseEntity.ok()
             .headers(HeaderUtil.createEntityUpdateAlert(applicationName, false, ENTITY_NAME, stock.getId().toString()))
@@ -123,5 +126,15 @@ public class StockResource {
         log.debug("REST request to delete Stock : {}", id);
         stockRepository.deleteById(id);
         return ResponseEntity.noContent().headers(HeaderUtil.createEntityDeletionAlert(applicationName, false, ENTITY_NAME, id.toString())).build();
+    }
+
+    /**
+     * retourn les produits qui ne sont pas encore dans le stock
+     */
+    @GetMapping("/stocksF")
+    public ResponseEntity<List<Stock>> getProduitsNoStock() {
+        log.debug("REST request to get a page of Stocks");
+        List<Produit> produits = stockRepository.FindProductsNoStock();
+        return (ResponseEntity<List<Stock>>) produits;
     }
 }

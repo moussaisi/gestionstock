@@ -15,7 +15,7 @@ const accountMenuItemsAuthenticated = (
       Password
     </MenuItem>
     <MenuItem icon="sign-out-alt" to="/logout">
-      Sign out
+      Déconnexion
     </MenuItem>
   </>
 );
