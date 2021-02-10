@@ -14,7 +14,7 @@
     {
       "fieldName": "libelle_produit",
       "fieldType": "String",
-      "fieldValidateRules": []
+      "fieldValidateRules": ["required", "unique"]
     }
   ],
   "changelogDate": "20210127150930",

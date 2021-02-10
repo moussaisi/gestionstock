@@ -19,6 +19,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.List;
@@ -53,7 +54,7 @@ public class CategorieResource {
      * @throws URISyntaxException if the Location URI syntax is incorrect.
      */
     @PostMapping("/categories")
-    public ResponseEntity<Categorie> createCategorie(@RequestBody Categorie categorie) throws URISyntaxException {
+    public ResponseEntity<Categorie> createCategorie(@Valid @RequestBody Categorie categorie) throws URISyntaxException {
         log.debug("REST request to save Categorie : {}", categorie);
         if (categorie.getId() != null) {
             throw new BadRequestAlertException("A new categorie cannot already have an ID", ENTITY_NAME, "idexists");
@@ -74,7 +75,7 @@ public class CategorieResource {
      * @throws URISyntaxException if the Location URI syntax is incorrect.
      */
     @PutMapping("/categories")
-    public ResponseEntity<Categorie> updateCategorie(@RequestBody Categorie categorie) throws URISyntaxException {
+    public ResponseEntity<Categorie> updateCategorie(@Valid @RequestBody Categorie categorie) throws URISyntaxException {
         log.debug("REST request to update Categorie : {}", categorie);
         if (categorie.getId() == null) {
             throw new BadRequestAlertException("Invalid id", ENTITY_NAME, "idnull");

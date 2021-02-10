@@ -6,7 +6,7 @@
     {
       "fieldName": "libelle_categorie",
       "fieldType": "String",
-      "fieldValidateRules": []
+      "fieldValidateRules": ["required", "unique"]
     }
   ],
   "changelogDate": "20210127150433",
