@@ -68,10 +68,10 @@ export const Stock = (props: IStockProps) => {
   return (
     <div>
       <h2 id="stock-heading">
-        Stocks
+        Etat du stocks
         <Link to={`${match.url}/new`} className="btn btn-primary float-right jh-create-entity" id="jh-create-entity">
           <FontAwesomeIcon icon="plus" />
-          &nbsp; Create new Stock
+          &nbsp; Nouveau Stock!
         </Link>
       </h2>
       <div className="table-responsive">
@@ -99,7 +99,7 @@ export const Stock = (props: IStockProps) => {
                 <tr key={`entity-${i}`}>
                   <td>
                     <Button tag={Link} to={`${match.url}/${stock.id}`} color="link" size="sm">
-                      {stock.id}
+                      {++i}
                     </Button>
                   </td>
                   <td>{stock.quantite}</td>
