@@ -110,6 +110,25 @@ public class CategorieResourceIT {
 
     @Test
     @Transactional
+    public void checkLibelle_categorieIsRequired() throws Exception {
+        int databaseSizeBeforeTest = categorieRepository.findAll().size();
+        // set the field null
+        categorie.setLibelle_categorie(null);
+
+        // Create the Categorie, which fails.
+
+
+        restCategorieMockMvc.perform(post("/api/categories")
+            .contentType(MediaType.APPLICATION_JSON)
+            .content(TestUtil.convertObjectToJsonBytes(categorie)))
+            .andExpect(status().isBadRequest());
+
+        List<Categorie> categorieList = categorieRepository.findAll();
+        assertThat(categorieList).hasSize(databaseSizeBeforeTest);
+    }
+
+    @Test
+    @Transactional
     public void getAllCategories() throws Exception {
         // Initialize the database
         categorieRepository.saveAndFlush(categorie);

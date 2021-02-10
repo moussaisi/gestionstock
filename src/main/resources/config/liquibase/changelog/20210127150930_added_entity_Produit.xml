@@ -17,7 +17,7 @@
                 <constraints primaryKey="true" nullable="false"/>
             </column>
             <column name="libelle_produit" type="varchar(255)">
-                <constraints nullable="true" />
+                <constraints nullable="false" unique="true" uniqueConstraintName="ux_produit_libelle_produit" />
             </column>
             <column name="categorie_id" type="bigint">
                 <constraints nullable="true" />
