@@ -1,0 +1,34 @@
+pipeline{
+    agent any
+    stages{
+        stage('Clean') {
+            steps {
+                cleanWs()
+            }
+        }
+        stage('source'){
+            steps{
+                git(
+                    url:'https://github.com/moussaisi/gestionstock.git',
+                    credentialsId:'my_pipeline_id',
+			branch: "approvisionnement"
+                )
+            }
+        }
+        stage('unit_test'){
+            steps{
+                bat 'mvn test'
+            }
+        }
+        stage('code_quality'){
+            steps{
+                bat "mvn sonar:sonar"
+            }
+        }
+        stage('deploy'){
+            steps{
+                bat "mvn sonar:sonar -Dsonar.host.url=http://localhost:9010"
+            }
+        }
+         
+    }
