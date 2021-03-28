@@ -70,4 +70,7 @@ public class Categorie implements Serializable {
             ", libelle_categorie='" + getLibelle_categorie() + "'" +
             "}";
     }
+
+    public void setUtilisateur(Utilisateur utilisateur) {
+    }
 }
