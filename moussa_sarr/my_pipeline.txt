@@ -30,5 +30,15 @@ pipeline{
                 bat "mvn sonar:sonar -Dsonar.host.url=http://localhost:9010"
             }
         }
-         
+        stage('deploy_test'){
+            steps{
+                bat "mvn -DskipTests tomcat7:deploy"
+            }
+        }
+        stage('artifactory_deploy'){
+            steps{
+                bat "mvn deploy"
+            }
+        }
+
     }
