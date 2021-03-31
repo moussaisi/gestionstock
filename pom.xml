@@ -321,6 +321,18 @@
         </dependency>
         <!-- jhipster-needle-maven-add-dependency -->
     </dependencies>
+    <distributionManagement>
+        <repository>
+            <id>central</id>
+            <name>DESKTOP-4PJA5V6-releases</name>
+            <url>http://localhost:8081/artifactory/gestion_stock</url>
+        </repository>
+        <snapshotRepository>
+            <id>snapshots</id>
+            <name>DESKTOP-4PJA5V6-snapshots</name>
+            <url>http://localhost:8081/artifactory/gestion_stock</url>
+        </snapshotRepository>
+    </distributionManagement>
 
     <build>
         <defaultGoal>spring-boot:run</defaultGoal>
