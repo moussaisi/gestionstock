@@ -64,6 +64,7 @@ export const Facture = (props: IFactureProps) => {
       activePage: currentPage,
     });
 
+
   const { factureList, match, loading, totalItems } = props;
   return (
     <div>
@@ -97,6 +98,7 @@ export const Facture = (props: IFactureProps) => {
                 <th className="hand" onClick={sort('etat')}>
                   Etat <FontAwesomeIcon icon="sort" />
                 </th>
+
                 <th />
               </tr>
             </thead>
@@ -113,6 +115,9 @@ export const Facture = (props: IFactureProps) => {
                   <td>{facture.prenom_client}</td>
                   <td>{facture.nom_client}</td>
                   <td>{facture.etat}</td>
+
+
+
                   <td className="text-right">
                     <div className="btn-group flex-btn-group-container">
                       <Button tag={Link} to={`${match.url}/${facture.id}`} color="info" size="sm">

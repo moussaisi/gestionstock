@@ -32,6 +32,16 @@ public class Facture implements Serializable {
 
     @Column(name = "nom_client")
     private String nom_client;
+    @Column(name = "numero")
+    private String numero;
+
+    public String getNumero() {
+        return numero;
+    }
+
+    public void setNumero(String numero) {
+        this.numero = numero;
+    }
 
     @Enumerated(EnumType.STRING)
     @Column(name = "etat")
