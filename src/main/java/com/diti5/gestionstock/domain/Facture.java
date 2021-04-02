@@ -7,6 +7,7 @@ import java.io.Serializable;
 import java.time.ZonedDateTime;
 
 import com.diti5.gestionstock.domain.enumeration.etat;
+import com.diti5.gestionstock.domain.User;
 
 /**
  * A Facture.
@@ -33,15 +34,11 @@ public class Facture implements Serializable {
     @Column(name = "nom_client")
     private String nom_client;
     @Column(name = "numero")
-    private String numero;
+    private int numero;
+    @Column(name = "user")
 
-    public String getNumero() {
-        return numero;
-    }
-
-    public void setNumero(String numero) {
-        this.numero = numero;
-    }
+    @OneToMany(mappedBy="user")
+     private User user;
 
     @Enumerated(EnumType.STRING)
     @Column(name = "etat")
@@ -54,6 +51,22 @@ public class Facture implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public int getNumero() {
+        return numero;
+    }
+
+    public void setNumero(int numero) {
+        this.numero = numero;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 
     public ZonedDateTime getDate() {

@@ -139,6 +139,22 @@ export const Facture = (props: IFactureProps) => {
                       >
                         <FontAwesomeIcon icon="trash" /> <span className="d-none d-md-inline">Delete</span>
                       </Button>
+                      <Button
+                        tag={Link}
+                        to={`${match.url}/${facture.id}/delete?page=${paginationState.activePage}&sort=${paginationState.sort},${paginationState.order}`}
+                        color="danger"
+                        size="sm"
+                      >
+                        <FontAwesomeIcon icon="trash" /> <span className="d-none d-md-inline">Annuler</span>
+                      </Button>
+                      <Button
+                        tag={Link}
+                        to={`${match.url}/${facture.id}/imprimer?page=${paginationState.activePage}&sort=${paginationState.sort},${paginationState.order}`}
+                        color="danger"
+                        size="sm"
+                      >
+                        <FontAwesomeIcon icon="trash" /> <span className="d-none d-md-inline">Imprimer</span>
+                      </Button>
                     </div>
                   </td>
                 </tr>
