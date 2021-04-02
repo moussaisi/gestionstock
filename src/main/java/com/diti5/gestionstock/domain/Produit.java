@@ -3,6 +3,7 @@ package com.diti5.gestionstock.domain;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
+import javax.validation.constraints.*;
 
 import java.io.Serializable;
 
@@ -19,7 +20,8 @@ public class Produit implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "libelle_produit")
+    @NotNull
+    @Column(name = "libelle_produit", nullable = false, unique = true)
     private String libelle_produit;
 
     @ManyToOne

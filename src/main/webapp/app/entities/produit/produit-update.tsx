@@ -80,7 +80,14 @@ export const ProduitUpdate = (props: IProduitUpdateProps) => {
                 <Label id="libelle_produitLabel" for="produit-libelle_produit">
                   Libelle Produit
                 </Label>
-                <AvField id="produit-libelle_produit" type="text" name="libelle_produit" />
+                <AvField
+                  id="produit-libelle_produit"
+                  type="text"
+                  name="libelle_produit"
+                  validate={{
+                    required: { value: true, errorMessage: 'This field is required.' },
+                  }}
+                />
               </AvGroup>
               <AvGroup>
                 <Label for="produit-categorie">Categorie</Label>
