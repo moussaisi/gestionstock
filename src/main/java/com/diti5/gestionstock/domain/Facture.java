@@ -35,8 +35,6 @@ public class Facture implements Serializable {
     private String nom_client;
     @Column(name = "numero")
     private int numero;
-    @Column(name = "user")
-
     @OneToMany(mappedBy="user")
      private User user;
 
