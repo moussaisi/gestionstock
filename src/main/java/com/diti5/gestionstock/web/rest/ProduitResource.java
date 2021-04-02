@@ -1,3 +1,5 @@
+
+
 package com.diti5.gestionstock.web.rest;
 
 import com.diti5.gestionstock.domain.Produit;
