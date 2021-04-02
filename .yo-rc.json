@@ -1,0 +1,40 @@
+{
+  "generator-jhipster": {
+    "promptValues": {
+      "packageName": "com.diti5.gestionstock"
+    },
+    "jhipsterVersion": "6.10.5",
+    "applicationType": "monolith",
+    "baseName": "gestion_stock",
+    "packageName": "com.diti5.gestionstock",
+    "packageFolder": "com/diti5/gestionstock",
+    "serverPort": "8080",
+    "authenticationType": "jwt",
+    "cacheProvider": "no",
+    "websocket": false,
+    "databaseType": "sql",
+    "devDatabaseType": "mysql",
+    "prodDatabaseType": "mysql",
+    "searchEngine": false,
+    "messageBroker": false,
+    "serviceDiscoveryType": false,
+    "buildTool": "maven",
+    "enableSwaggerCodegen": false,
+    "jwtSecretKey": "YzJlODNiNjQ2NzJiOTJjMmJlY2U2YjQ2ODgyZjRiMGUzMmM1ZDIzYWMzMzQ1MGU0OTdhNTc0MWIyODk5ZjMxMmVhZWIxOTI3OWQxN2ZjY2I5YmJiNmFhNzAzY2Q3Y2U2MzM3NDIzMjdjNjQwNDQzYjhlODM0MDY4MWEwNGYyYzg=",
+    "embeddableLaunchScript": false,
+    "useSass": true,
+    "clientPackageManager": "npm",
+    "clientFramework": "react",
+    "clientTheme": "none",
+    "clientThemeVariant": "",
+    "creationTimestamp": 1610906473045,
+    "testFrameworks": ["gatling"],
+    "jhiPrefix": "jhi",
+    "entitySuffix": "",
+    "dtoSuffix": "DTO",
+    "otherModules": [],
+    "enableTranslation": false,
+    "blueprints": [],
+    "lastLiquibaseTimestamp": 1611761105000
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "fluentMethods": true,
+  "clientRootFolder": "",
+  "relationships": [],
+  "fields": [
+    {
+      "fieldName": "date",
+      "fieldType": "ZonedDateTime"
+    },
+    {
+      "fieldName": "quantite",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "prenom_client",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "nom_client",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "etat",
+      "fieldType": "etat",
+      "fieldValues": "ACTIF,INACTIF"
+    }
+  ],
+  "changelogDate": "20210127152128",
+  "dto": "no",
+  "searchEngine": false,
+  "service": "no",
+  "entityTableName": "facture",
+  "databaseType": "sql",
+  "readOnly": false,
+  "jpaMetamodelFiltering": false,
+  "pagination": "pagination"
+}
