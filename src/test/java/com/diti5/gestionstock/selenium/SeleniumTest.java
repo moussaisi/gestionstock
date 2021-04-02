@@ -37,6 +37,5 @@ public class SeleniumTest {
         File source = screenshot.getScreenshotAs(OutputType.FILE);
 
 
-
     }
 }
