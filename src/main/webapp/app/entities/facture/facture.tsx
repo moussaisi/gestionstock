@@ -64,6 +64,7 @@ export const Facture = (props: IFactureProps) => {
       activePage: currentPage,
     });
 
+
   const { factureList, match, loading, totalItems } = props;
   return (
     <div>
@@ -97,6 +98,7 @@ export const Facture = (props: IFactureProps) => {
                 <th className="hand" onClick={sort('etat')}>
                   Etat <FontAwesomeIcon icon="sort" />
                 </th>
+
                 <th />
               </tr>
             </thead>
@@ -113,6 +115,9 @@ export const Facture = (props: IFactureProps) => {
                   <td>{facture.prenom_client}</td>
                   <td>{facture.nom_client}</td>
                   <td>{facture.etat}</td>
+
+
+
                   <td className="text-right">
                     <div className="btn-group flex-btn-group-container">
                       <Button tag={Link} to={`${match.url}/${facture.id}`} color="info" size="sm">
@@ -133,6 +138,22 @@ export const Facture = (props: IFactureProps) => {
                         size="sm"
                       >
                         <FontAwesomeIcon icon="trash" /> <span className="d-none d-md-inline">Delete</span>
+                      </Button>
+                      <Button
+                        tag={Link}
+                        to={`${match.url}/${facture.id}/delete?page=${paginationState.activePage}&sort=${paginationState.sort},${paginationState.order}`}
+                        color="danger"
+                        size="sm"
+                      >
+                        <FontAwesomeIcon icon="trash" /> <span className="d-none d-md-inline">Annuler</span>
+                      </Button>
+                      <Button
+                        tag={Link}
+                        to={`${match.url}/${facture.id}/imprimer?page=${paginationState.activePage}&sort=${paginationState.sort},${paginationState.order}`}
+                        color="danger"
+                        size="sm"
+                      >
+                        <FontAwesomeIcon icon="trash" /> <span className="d-none d-md-inline">Imprimer</span>
                       </Button>
                     </div>
                   </td>

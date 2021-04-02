@@ -1,0 +1,117 @@
+pipeline {
+ 
+   agent any
+
+   
+    stages {
+   
+     stage('Hello') {
+   
+         steps {
+             
+                echo 'Hello World'
+           
+               }
+       
+     }
+        
+     stage('source'){
+  
+        steps{
+       
+             git(
+                   
+                 url:'https://github.com/moussaisi/gestionstock',
+
+                  
+                 credentialsId:'aichagitID',
+
+                   
+                 branch: 'ges_ventes'
+
+               
+                )
+           
+             }
+
+       
+       }
+         
+       stage('unit test'){
+
+ 
+           steps{
+
+                
+                bat 'mvn test'
+
+     
+               }
+
+       
+        }
+         
+         stage('Quality Code'){
+
+  
+           steps{
+
+   
+             bat 'mvn sonar:sonar -Dsonar.login=admin -Dsonar.password=admin -Dsonar.host.url=http://localhost:9004' 
+
+               }
+
+      
+         }
+       
+         stage('Local Deploy'){
+
+
+            steps{ 
+
+                
+                   bat 'mvnw -Pdev -DskipTests'   
+
+           
+                 }
+
+      
+           }
+         
+           stage('Tomcat Deploy'){
+
+          
+              steps{ 
+ 
+               
+                   bat 'mvnw -DskipTests tomcat7'
+
+        
+                   }
+
+        
+
+             }
+
+           stage ('Run JFrog CLI') {
+
+     
+                steps{
+
+       
+                   sh 'jfrog rt mvn -f /C:/Users/AICHOU/test/pom.xml clean install' // build & deploy artifacts
+
+   
+                   sh 'jfrog rt bp' // publish build info
+
+       
+                   }
+
+    
+              }       
+  
+  }
+
+
+}
+
