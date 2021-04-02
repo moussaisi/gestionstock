@@ -1,0 +1,38 @@
+pipeline{
+    agent any
+    stages{
+
+        stage('bonjour'){
+            steps {
+                echo 'Hello word'
+            }
+        }
+        stage('source'){
+            steps{
+                git(
+                    url:'https://github.com/moussaisi/gestionstock',
+                    credentialsId:'benGithubID',
+                    branch: 'gestion_produits_categories'
+                    )
+            }
+        }
+        stage('unit test'){
+            steps{
+                bat 'mvn test'
+            }
+        }
+        stage('sonar test'){
+            steps{
+                bat 'mvn sonar:sonar -Dsonar.login=admin -Dsonar.password=passer -Dsonar.host.url=http://localhost:9009'
+            }
+        }
+
+        stage('deploye'){
+            steps{
+                bat 'mvn -Pdev -DskipTests'
+            }
+        }
+
+
+    }
+}
