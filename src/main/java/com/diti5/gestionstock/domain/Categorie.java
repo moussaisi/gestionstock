@@ -2,6 +2,7 @@ package com.diti5.gestionstock.domain;
 
 
 import javax.persistence.*;
+import javax.validation.constraints.*;
 
 import java.io.Serializable;
 
@@ -18,7 +19,8 @@ public class Categorie implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "libelle_categorie")
+    @NotNull
+    @Column(name = "libelle_categorie", nullable = false, unique = true)
     private String libelle_categorie;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here
@@ -67,5 +69,8 @@ public class Categorie implements Serializable {
             "id=" + getId() +
             ", libelle_categorie='" + getLibelle_categorie() + "'" +
             "}";
+    }
+
+    public void setUtilisateur(Utilisateur utilisateur) {
     }
 }

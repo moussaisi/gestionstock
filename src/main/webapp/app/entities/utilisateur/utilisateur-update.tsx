@@ -7,20 +7,20 @@ import { ICrudGetAction, ICrudGetAllAction, ICrudPutAction } from 'react-jhipste
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { IRootState } from 'app/shared/reducers';
 
-import { getEntity, updateEntity, createEntity, reset } from './categorie.reducer';
-import { ICategorie } from 'app/shared/model/categorie.model';
+import { getEntity, updateEntity, createEntity, reset } from './utilisateur.reducer';
+import { IUtilisateur } from 'app/shared/model/utilisateur.model';
 import { convertDateTimeFromServer, convertDateTimeToServer, displayDefaultDateTime } from 'app/shared/util/date-utils';
 import { mapIdList } from 'app/shared/util/entity-utils';
 
-export interface ICategorieUpdateProps extends StateProps, DispatchProps, RouteComponentProps<{ id: string }> {}
+export interface IUtilisateurUpdateProps extends StateProps, DispatchProps, RouteComponentProps<{ id: string }> {}
 
-export const CategorieUpdate = (props: ICategorieUpdateProps) => {
+export const UtilisateurUpdate = (props: IUtilisateurUpdateProps) => {
   const [isNew, setIsNew] = useState(!props.match.params || !props.match.params.id);
 
-  const { categorieEntity, loading, updating } = props;
+  const { utilisateurEntity, loading, updating } = props;
 
   const handleClose = () => {
-    props.history.push('/categorie' + props.location.search);
+    props.history.push('/utilisateur');
   };
 
   useEffect(() => {
@@ -40,7 +40,7 @@ export const CategorieUpdate = (props: ICategorieUpdateProps) => {
   const saveEntity = (event, errors, values) => {
     if (errors.length === 0) {
       const entity = {
-        ...categorieEntity,
+        ...utilisateurEntity,
         ...values,
       };
 
@@ -56,7 +56,7 @@ export const CategorieUpdate = (props: ICategorieUpdateProps) => {
     <div>
       <Row className="justify-content-center">
         <Col md="8">
-          <h2 id="gestionStockApp.categorie.home.createOrEditLabel">Create or edit a Categorie</h2>
+          <h2 id="gestionStockApp.utilisateur.home.createOrEditLabel">Create or edit a Utilisateur</h2>
         </Col>
       </Row>
       <Row className="justify-content-center">
@@ -64,27 +64,44 @@ export const CategorieUpdate = (props: ICategorieUpdateProps) => {
           {loading ? (
             <p>Loading...</p>
           ) : (
-            <AvForm model={isNew ? {} : categorieEntity} onSubmit={saveEntity}>
+            <AvForm model={isNew ? {} : utilisateurEntity} onSubmit={saveEntity}>
               {!isNew ? (
                 <AvGroup>
-                  <Label for="categorie-id">ID</Label>
-                  <AvInput id="categorie-id" type="text" className="form-control" name="id" required readOnly />
+                  <Label for="utilisateur-id">ID</Label>
+                  <AvInput id="utilisateur-id" type="text" className="form-control" name="id" required readOnly />
                 </AvGroup>
               ) : null}
               <AvGroup>
-                <Label id="libelle_categorieLabel" for="categorie-libelle_categorie">
-                  Libelle Categorie
+                <Label id="nomLabel" for="utilisateur-nom">
+                  Nom
                 </Label>
                 <AvField
-                  id="categorie-libelle_categorie"
+                  id="utilisateur-nom"
                   type="text"
-                  name="libelle_categorie"
+                  name="nom"
                   validate={{
                     required: { value: true, errorMessage: 'This field is required.' },
+                    minLength: { value: 2, errorMessage: 'This field is required to be at least 2 characters.' },
+                    maxLength: { value: 30, errorMessage: 'This field cannot be longer than 30 characters.' },
                   }}
                 />
               </AvGroup>
-              <Button tag={Link} id="cancel-save" to="/categorie" replace color="info">
+              <AvGroup>
+                <Label id="prenomLabel" for="utilisateur-prenom">
+                  Prenom
+                </Label>
+                <AvField
+                  id="utilisateur-prenom"
+                  type="text"
+                  name="prenom"
+                  validate={{
+                    required: { value: true, errorMessage: 'This field is required.' },
+                    minLength: { value: 2, errorMessage: 'This field is required to be at least 2 characters.' },
+                    maxLength: { value: 40, errorMessage: 'This field cannot be longer than 40 characters.' },
+                  }}
+                />
+              </AvGroup>
+              <Button tag={Link} id="cancel-save" to="/utilisateur" replace color="info">
                 <FontAwesomeIcon icon="arrow-left" />
                 &nbsp;
                 <span className="d-none d-md-inline">Back</span>
@@ -103,10 +120,10 @@ export const CategorieUpdate = (props: ICategorieUpdateProps) => {
 };
 
 const mapStateToProps = (storeState: IRootState) => ({
-  categorieEntity: storeState.categorie.entity,
-  loading: storeState.categorie.loading,
-  updating: storeState.categorie.updating,
-  updateSuccess: storeState.categorie.updateSuccess,
+  utilisateurEntity: storeState.utilisateur.entity,
+  loading: storeState.utilisateur.loading,
+  updating: storeState.utilisateur.updating,
+  updateSuccess: storeState.utilisateur.updateSuccess,
 });
 
 const mapDispatchToProps = {
@@ -119,4 +136,4 @@ const mapDispatchToProps = {
 type StateProps = ReturnType<typeof mapStateToProps>;
 type DispatchProps = typeof mapDispatchToProps;
 
-export default connect(mapStateToProps, mapDispatchToProps)(CategorieUpdate);
+export default connect(mapStateToProps, mapDispatchToProps)(UtilisateurUpdate);
