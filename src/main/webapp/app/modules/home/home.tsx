@@ -16,44 +16,44 @@ export const Home = (props: IHomeProp) => {
   return (
     <Row>
       <Col md="9">
-        <h2>Welcome, Java Hipster!</h2>
-        <p className="lead">This is your homepage</p>
+        <h2>Bienvenue</h2>
+        <p className="lead">Ceci est votre page d'accueil</p>
         {account && account.login ? (
           <div>
-            <Alert color="success">You are logged in as user {account.login}.</Alert>
+            <Alert color="success">Vous etes connecté en tant que {account.login}.</Alert>
           </div>
         ) : (
           <div>
             <Alert color="warning">
-              If you want to
+              Si vous voulez vous
               <Link to="/login" className="alert-link">
                 {' '}
-                sign in
+                connecter
               </Link>
-              , you can try the default accounts:
-              <br />- Administrator (login=&quot;admin&quot; and password=&quot;admin&quot;)
-              <br />- User (login=&quot;user&quot; and password=&quot;user&quot;).
+              , vous pouvez utiliser les comptes par défauts:
+              <br />- Administrateur (Identifiant=&quot;admin&quot; et mot de passe=&quot;admin&quot;)
+              <br />- Utilisateur (Identifiant=&quot;user&quot; et mot de passe=&quot;user&quot;).
             </Alert>
 
             <Alert color="warning">
-              You do not have an account yet?&nbsp;
+              Vous n'avez pas encore de compte?&nbsp;
               <Link to="/account/register" className="alert-link">
-                Register a new account
+                Créer une compte
               </Link>
             </Alert>
           </div>
         )}
-        <p>If you have any question on JHipster:</p>
+        <p>Si vous avez des questions concernant JHipster</p>
 
         <ul>
           <li>
             <a href="https://www.jhipster.tech/" target="_blank" rel="noopener noreferrer">
-              JHipster homepage
+              JHipster Accueil
             </a>
           </li>
           <li>
             <a href="http://stackoverflow.com/tags/jhipster/info" target="_blank" rel="noopener noreferrer">
-              JHipster on Stack Overflow
+              JHipster sur Stack Overflow
             </a>
           </li>
           <li>
@@ -63,23 +63,17 @@ export const Home = (props: IHomeProp) => {
           </li>
           <li>
             <a href="https://gitter.im/jhipster/generator-jhipster" target="_blank" rel="noopener noreferrer">
-              JHipster public chat room
+              Chat Room de JHipster
             </a>
           </li>
           <li>
             <a href="https://twitter.com/jhipster" target="_blank" rel="noopener noreferrer">
-              follow @jhipster on Twitter
+              Suivez @jhipster sur Twitter
             </a>
           </li>
         </ul>
 
-        <p>
-          If you like JHipster, do not forget to give us a star on{' '}
-          <a href="https://github.com/jhipster/generator-jhipster" target="_blank" rel="noopener noreferrer">
-            Github
-          </a>
-          !
-        </p>
+       
       </Col>
       <Col md="3" className="pad">
         <span className="hipster rounded" />
