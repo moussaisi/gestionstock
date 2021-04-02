@@ -34,15 +34,15 @@ export const FactureDeleteDialog = (props: IFactureDeleteDialogProps) => {
   return (
     <Modal isOpen toggle={handleClose}>
       <ModalHeader toggle={handleClose}>Confirm delete operation</ModalHeader>
-      <ModalBody id="gestionStockApp.facture.delete.question">Are you sure you want to delete this Facture?</ModalBody>
+      <ModalBody id="gestionStockApp.facture.delete.question">Etes-vous sur de vouloir annuler cette facture?</ModalBody>
       <ModalFooter>
         <Button color="secondary" onClick={handleClose}>
           <FontAwesomeIcon icon="ban" />
           &nbsp; Cancel
         </Button>
         <Button id="jhi-confirm-delete-facture" color="danger" onClick={confirmDelete}>
-          <FontAwesomeIcon icon="trash" />
-          &nbsp; Delete
+
+          &nbsp; Annuler
         </Button>
       </ModalFooter>
     </Modal>
