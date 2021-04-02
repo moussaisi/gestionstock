@@ -19,6 +19,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.List;
@@ -53,7 +54,7 @@ public class ProduitResource {
      * @throws URISyntaxException if the Location URI syntax is incorrect.
      */
     @PostMapping("/produits")
-    public ResponseEntity<Produit> createProduit(@RequestBody Produit produit) throws URISyntaxException {
+    public ResponseEntity<Produit> createProduit(@Valid @RequestBody Produit produit) throws URISyntaxException {
         log.debug("REST request to save Produit : {}", produit);
         if (produit.getId() != null) {
             throw new BadRequestAlertException("A new produit cannot already have an ID", ENTITY_NAME, "idexists");
@@ -74,7 +75,7 @@ public class ProduitResource {
      * @throws URISyntaxException if the Location URI syntax is incorrect.
      */
     @PutMapping("/produits")
-    public ResponseEntity<Produit> updateProduit(@RequestBody Produit produit) throws URISyntaxException {
+    public ResponseEntity<Produit> updateProduit(@Valid @RequestBody Produit produit) throws URISyntaxException {
         log.debug("REST request to update Produit : {}", produit);
         if (produit.getId() == null) {
             throw new BadRequestAlertException("Invalid id", ENTITY_NAME, "idnull");

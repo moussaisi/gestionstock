@@ -110,6 +110,25 @@ public class ProduitResourceIT {
 
     @Test
     @Transactional
+    public void checkLibelle_produitIsRequired() throws Exception {
+        int databaseSizeBeforeTest = produitRepository.findAll().size();
+        // set the field null
+        produit.setLibelle_produit(null);
+
+        // Create the Produit, which fails.
+
+
+        restProduitMockMvc.perform(post("/api/produits")
+            .contentType(MediaType.APPLICATION_JSON)
+            .content(TestUtil.convertObjectToJsonBytes(produit)))
+            .andExpect(status().isBadRequest());
+
+        List<Produit> produitList = produitRepository.findAll();
+        assertThat(produitList).hasSize(databaseSizeBeforeTest);
+    }
+
+    @Test
+    @Transactional
     public void getAllProduits() throws Exception {
         // Initialize the database
         produitRepository.saveAndFlush(produit);
