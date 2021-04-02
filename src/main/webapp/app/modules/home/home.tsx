@@ -26,7 +26,9 @@ export const Home = (props: IHomeProp) => {
             <img src="content/images/stock.jpg" width="100%" height="450"/>
           </div>
         )}
-      </col>
+
+
+      </Col>
     </Row>
   );
 };

@@ -21,6 +21,8 @@ import org.springframework.web.bind.annotation.*;
 
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.time.ZonedDateTime;
+import java.util.Calendar;
 import java.util.List;
 import java.util.Optional;
 
@@ -123,5 +125,16 @@ public class FactureResource {
         log.debug("REST request to delete Facture : {}", id);
         factureRepository.deleteById(id);
         return ResponseEntity.noContent().headers(HeaderUtil.createEntityDeletionAlert(applicationName, false, ENTITY_NAME, id.toString())).build();
+    }
+    private int numero(){
+        Facture facture=new Facture();
+        Calendar c = Calendar. getInstance();
+        int year = c. get(Calendar. YEAR);
+        System. out. println("year=" + year);
+        int numero=year+0000;
+
+        return numero;
+
+
     }
 }

@@ -1,0 +1,71 @@
+pipeline {
+
+    agent any
+
+
+    stages {
+
+        stage('Clean') {
+
+            steps {
+
+                cleanWs()
+
+            }
+
+        }
+
+
+
+
+        stage('Source') {
+
+            steps {
+
+                git(
+
+                   url: 'https://github.com/moussaisi/gestionstock.git',
+
+                   credentialsId: 'niceR',
+
+                   branch: "ges_ventes"
+
+                )
+
+
+
+            }
+
+        }
+
+
+         stage('unit_test') {
+
+            steps {
+
+                  bat 'mvn test'
+
+
+
+
+
+            }
+
+        }
+
+        stage('code_quality'){
+            steps{
+               bat "mvn sonar:sonar"
+            }
+        }
+
+         stage('deploy'){
+            steps{
+                bat "mvnw -Pdev -DskipTests"
+            }
+        }
+
+
+    }
+
+}
