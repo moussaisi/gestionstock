@@ -65,6 +65,12 @@ pipeline {
             }
         }
 
+        stage('artifactory_deploy'){
+                   steps{
+                       bat "mvn deploy"
+                   }
+               }
+
 
     }
 
