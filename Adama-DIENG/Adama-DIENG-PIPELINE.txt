@@ -1,0 +1,67 @@
+pipeline{
+
+    agent any  
+   
+
+    stages{
+
+        stage('bonjour'){
+
+            steps {
+
+                echo 'Hello word'
+
+            }
+
+        }
+         stage('source'){
+
+            steps{
+                git(
+                    url:'https://github.com/moussaisi/gestionstock',
+
+                    credentialsId:'AdodiengGithubID',
+
+                    branch: 'ges_ventes'
+
+                    )
+            }
+
+        }
+          stage('unit test'){
+
+            steps{
+
+                bat'mvnw test'
+
+            }
+
+        }
+         stage('Quality Code'){
+
+            steps{
+
+                bat 'mvnw sonar:sonar -Dsonar.host.url=http://localhost:9000 -Dsonar.login=admin -Dsonar.password=passer' 
+            }
+
+        }
+        stage('Local Deploy'){
+
+            steps{
+
+                bat 'mvnw -Pdev -DskipTests'   
+
+            }
+
+        }
+           stage('deploy_test'){
+            steps{
+                bat "mvn -DskipTests tomcat7:deploy"
+            }
+        }
+        
+        stage('artifactory_deploy'){
+            steps{
+                bat "mvn deploy"
+            }
+        }
