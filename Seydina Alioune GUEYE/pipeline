@@ -1,0 +1,45 @@
+pipeline{
+    
+    agent any 
+    
+    stages{
+        
+        stage ('Initialize') {
+            steps {
+                sh '''
+                    echo "PATH = ${PATH}"
+                    echo "M2_HOME = ${M2_HOME}"
+                '''
+            }
+        }
+        
+        stage('conn_gh'){
+            steps{
+                git(
+                    url:'https://github.com/moussaisi/gestionstock',
+                    credentialsId:'my-github',
+                    branch: 'master'
+                    )
+            }
+        }
+        
+        stage('unit test'){
+            steps{
+                sh 'mvn test'
+            }
+        }
+        
+         stage('sonar test'){
+            steps{
+                sh 'mvn sonar:sonar -Dsonar.login=admin -Dsonar.password=admin -Dsonar.host.url=http://localhost:9009'
+            }
+        }
+        
+         stage('deployement'){
+            steps{
+                sh 'mvn -Pdev -DskipTests'
+            }
+        }
+        
+    }    
+}
