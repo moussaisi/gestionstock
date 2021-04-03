@@ -1,0 +1,22 @@
+        stage('Clean') {
+            steps {
+                cleanWs()
+            }
+        }
+        stage('source'){
+            steps{
+                git(
+                    url:'https://github.com/moussaisi/gestionstock.git',
+
+                 credentialsId:'GitJenkins',
+                )
+            }
+        }
+        stage('unit_test'){
+            steps{
+                bat 'mvn test'
+            }
+        }
+
+    }
+}
