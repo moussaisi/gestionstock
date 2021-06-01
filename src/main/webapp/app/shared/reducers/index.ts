@@ -35,6 +35,10 @@ import sortie, {
 import utilisateur, {
   UtilisateurState
 } from 'app/entities/utilisateur/utilisateur.reducer';
+// prettier-ignore
+import info, {
+  InfoState
+} from 'app/entities/info/info.reducer';
 /* jhipster-needle-add-reducer-import - JHipster will add reducer here */
 
 export interface IRootState {
@@ -53,6 +57,7 @@ export interface IRootState {
   readonly facture: FactureState;
   readonly sortie: SortieState;
   readonly utilisateur: UtilisateurState;
+  readonly info: InfoState;
   /* jhipster-needle-add-reducer-type - JHipster will add reducer type here */
   readonly loadingBar: any;
 }
@@ -73,6 +78,7 @@ const rootReducer = combineReducers<IRootState>({
   facture,
   sortie,
   utilisateur,
+  info,
   /* jhipster-needle-add-reducer-combine - JHipster will add reducer here */
   loadingBar,
 });
